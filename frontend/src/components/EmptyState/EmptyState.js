@@ -31,20 +31,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const EmptyState = ({ campus }) => {
+const EmptyState = ({ isCampus }) => {
   const classes = useStyles();
   return (
     <div className={classes.container}>
       <img className={classes.img} src={empty} alt="not found" />
       <Typography variant="h4">
-        There are no {campus ? "campuses" : "students"} found at this time.
+        There are no {isCampus ? "campuses" : "students"} found at this time.
       </Typography>
       <Link
-        to={campus ? "/campus/edit" : "/student/edit"}
+        to={isCampus ? "/campuses/edit" : "/students/edit"}
         className={classes.link}
       >
         <Button className={classes.btn}>
-          Add {campus ? "campus" : "student"}
+          Add {isCampus ? "campus" : "student"}
         </Button>
       </Link>
     </div>

@@ -4,7 +4,7 @@ import { EmptyState } from "../EmptyState";
 
 const AllCampusesView = (props) => {
   if (!props.allCampuses.length) {
-    return <EmptyState campus />;
+    return <EmptyState isCampus />;
   }
 
   return (
