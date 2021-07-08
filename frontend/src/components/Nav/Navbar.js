@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
   appBar: {
     backgroundColor: "#0B3954",
     shadows: ["none"],
+    marginBottom: theme.spacing(1),
   },
   greeting: {
     display: "flex",

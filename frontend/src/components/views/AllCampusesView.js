@@ -1,9 +1,10 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { EmptyState } from "../EmptyState";
 
 const AllCampusesView = (props) => {
   if (!props.allCampuses.length) {
-    return <div>There are no campuses.</div>;
+    return <EmptyState campus />;
   }
 
   return (
