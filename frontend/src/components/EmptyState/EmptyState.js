@@ -1,6 +1,8 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+import { Link } from "react-router-dom";
 import empty from "../../images/empty.png";
 
 const useStyles = makeStyles((theme) => ({
@@ -16,6 +18,17 @@ const useStyles = makeStyles((theme) => ({
     width: theme.spacing(40),
     float: "right",
   },
+  link: {
+    textDecoration: "none",
+    color: "inherit",
+  },
+  btn: {
+    backgroundColor: "#087E8B",
+    color: "white",
+    marginTop: theme.spacing(4),
+    width: theme.spacing(30),
+    padding: theme.spacing(1),
+  },
 }));
 
 const EmptyState = ({ campus }) => {
@@ -26,6 +39,14 @@ const EmptyState = ({ campus }) => {
       <Typography variant="h4">
         There are no {campus ? "campuses" : "students"} found at this time.
       </Typography>
+      <Link
+        to={campus ? "/campus/edit" : "/student/edit"}
+        className={classes.link}
+      >
+        <Button className={classes.btn}>
+          Add {campus ? "campus" : "student"}
+        </Button>
+      </Link>
     </div>
   );
 };
