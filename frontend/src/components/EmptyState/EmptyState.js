@@ -40,7 +40,7 @@ const EmptyState = ({ isCampus }) => {
         There are no {isCampus ? "campuses" : "students"} found at this time.
       </Typography>
       <Link
-        to={isCampus ? "/campuses/edit" : "/students/edit"}
+        to={isCampus ? "/newcampus" : "/newstudent"}
         className={classes.link}
       >
         <Button className={classes.btn}>

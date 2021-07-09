@@ -4,6 +4,9 @@ import { Redirect } from "react-router-dom";
 import EditStudent from "./EditStudent";
 import { addStudentThunk } from "../../store/thunks";
 
+const defaultImg =
+  "https://347xj63da3uu3x11jfmmklg9-wpengine.netdna-ssl.com/wp-content/uploads/2020/10/7.png";
+
 class EditStudentContainer extends Component {
   constructor(props) {
     super(props);
@@ -12,7 +15,7 @@ class EditStudentContainer extends Component {
       lastname: "",
       campusId: null,
       email: "",
-      imageUrl: "",
+      imageUrl: defaultImg,
       gpa: 0.0,
       redirect: false,
       redirectId: null,
@@ -36,16 +39,14 @@ class EditStudentContainer extends Component {
       gpa: this.state.gpa,
       campusId: this.state.campusId,
     };
-    console.log("student", student);
 
     let newStudent = await this.props.addStudent(student);
 
-    console.log("newstudent", newStudent);
     this.setState({
       firstname: "",
       lastname: "",
       email: "",
-      imageUrl: "",
+      imageUrl: defaultImg,
       gpa: 0.0,
       campusId: null,
       redirect: true,

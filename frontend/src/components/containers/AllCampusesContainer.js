@@ -2,22 +2,18 @@ import { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { 
-  fetchAllCampusesThunk,
-  deleteCampusThunk
-} from "../../store/thunks";
+import { fetchAllCampusesThunk, deleteCampusThunk } from "../../store/thunks";
 import { AllCampusesView } from "../views";
 
 class AllCampusesContainer extends Component {
   componentDidMount() {
-    console.log(this.props);
     this.props.fetchAllCampuses();
   }
 
   render() {
     return (
-      <AllCampusesView 
-        allCampuses={this.props.allCampuses} 
+      <AllCampusesView
+        allCampuses={this.props.allCampuses}
         deleteCampus={this.props.deleteCampus}
       />
     );
