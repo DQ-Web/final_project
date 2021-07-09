@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
   formContainer: {
     margin: theme.spacing(4),
+    textAlign: "center",
   },
   title: {
     fontWeight: "bold",
@@ -29,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
   btn: {
     backgroundColor: "#087E8B",
     color: "white",
-    margin: theme.spacing(2.5),
+    margin: theme.spacing(5, 2.5, 0),
     width: theme.spacing(20),
   },
 }));
@@ -75,14 +76,20 @@ const EditStudent = ({ handleChange, handleSubmit }) => {
             style={{ width: "100%" }}
             onChange={(e) => handleChange(e)}
           />
-          <div>
+          <div style={{ display: "flex" }}>
             <TextField
               name="imageUrl"
               label="Profile Image"
               helperText="use an image URL"
+              style={{ width: "70%" }}
               onChange={(e) => handleChange(e)}
             />
-            <TextField name="gpa" label="GPA" />
+            <TextField
+              name="gpa"
+              label="GPA"
+              style={{ width: "30%" }}
+              onChange={(e) => handleChange(e)}
+            />
           </div>
 
           <Button className={classes.btn} type="submit">

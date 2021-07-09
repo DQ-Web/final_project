@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 import EditStudent from "./EditStudent";
 import { addStudentThunk } from "../../store/thunks";
 
-class NewStudentContainer extends Component {
+class EditStudentContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -76,4 +76,4 @@ const mapDispatch = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatch)(NewStudentContainer);
+export default connect(null, mapDispatch)(EditStudentContainer);

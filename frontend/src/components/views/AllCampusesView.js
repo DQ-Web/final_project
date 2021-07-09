@@ -2,11 +2,11 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 // import { EmptyState } from "../EmptyState";
 
-const AllCampusesView = ({allCampuses, deleteCampus}) => {
+const AllCampusesView = ({ allCampuses, deleteCampus }) => {
   if (!allCampuses.length) {
     return (
       <div>
-        <Link to='campus/new'>
+        <Link to="/newcampus">
           <button>Add New Campus</button>
         </Link>
       </div>
@@ -24,7 +24,7 @@ const AllCampusesView = ({allCampuses, deleteCampus}) => {
           <button onClick={() => deleteCampus(campus.id)}>Delete</button>
         </div>
       ))}
-      <Link to='campus/new'>
+      <Link to="/newcampus">
         <button>Add New Campus</button>
       </Link>
     </div>

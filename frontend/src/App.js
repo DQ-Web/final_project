@@ -14,6 +14,7 @@ import {
   EditCampus,
   EditStudent,
   EditStudentContainer,
+  EditCampusContainer,
 } from "./components/NewState";
 import Navbar from "./components/Nav";
 
@@ -27,12 +28,15 @@ const App = () => {
       <Navbar />
       <Switch>
         <Route exact path="/" component={HomePageContainer} />
+
         <Route exact path="/campuses" component={AllCampusesContainer} />
         <Route exact path="/campus/:id" component={CampusContainer} />
-        <Route exact path="/campuses/edit" component={EditCampus} />
+        <Route exact path="/campuses/:id/edit" component={EditCampus} />
+        <Route exact path="/newcampus" component={EditCampusContainer} />
+
         <Route exact path="/students" component={AllStudentsContainer} />
         <Route exact path="/student/:id" component={StudentContainer} />
-        <Route exact path="/students/edit" component={EditStudent} />
+        <Route exact path="/students/:id/edit" component={EditStudent} />
         <Route exact path="/newstudent" component={EditStudentContainer} />
       </Switch>
     </div>
