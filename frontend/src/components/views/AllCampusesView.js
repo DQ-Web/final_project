@@ -30,7 +30,7 @@ const AllCampusesView = ({allCampuses, deleteCampus}) => {
   if (!allCampuses.length) {
     return (
       <div>
-        <Link to='campus/new'>
+        <Link to="/newcampus">
           <button>Add New Campus</button>
         </Link>
       </div>

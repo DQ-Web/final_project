@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
   formContainer: {
     margin: theme.spacing(4),
+    textAlign: "center",
   },
   title: {
     fontWeight: "bold",
@@ -29,12 +30,12 @@ const useStyles = makeStyles((theme) => ({
   btn: {
     backgroundColor: "#087E8B",
     color: "white",
-    margin: theme.spacing(2.5),
+    margin: theme.spacing(5, 2.5, 0),
     width: theme.spacing(20),
   },
 }));
 
-const EditStudent = () => {
+const EditStudent = ({ handleChange, handleSubmit }) => {
   const classes = useStyles();
 
   return (
@@ -43,29 +44,58 @@ const EditStudent = () => {
         <Typography variant="h4" className={classes.title}>
           Create New Student
         </Typography>
-        <form className={classes.formContainer}>
+        <form
+          className={classes.formContainer}
+          onSubmit={(e) => handleSubmit(e)}
+        >
           <div>
-            <TextField required id="first-name" label="First Name" />
-            <TextField required id="last-name" label="Last Name" />
+            <TextField
+              required
+              name="firstname"
+              label="First Name"
+              onChange={(e) => handleChange(e)}
+            />
+            <TextField
+              required
+              name="lastname"
+              label="Last Name"
+              onChange={(e) => handleChange(e)}
+            />
+            <TextField
+              required
+              name="campusId"
+              label="Campus Id"
+              onChange={(e) => handleChange(e)}
+            />
           </div>
 
           <TextField
             required
-            id="email"
+            name="email"
             label="Email"
             style={{ width: "100%" }}
+            onChange={(e) => handleChange(e)}
           />
-          <div>
+          <div style={{ display: "flex" }}>
             <TextField
-              id="imageUrl"
+              name="imageUrl"
               label="Profile Image"
               helperText="use an image URL"
+              style={{ width: "70%" }}
+              onChange={(e) => handleChange(e)}
             />
-            <TextField required id="gpa" label="GPA" />
+            <TextField
+              name="gpa"
+              label="GPA"
+              style={{ width: "30%" }}
+              onChange={(e) => handleChange(e)}
+            />
           </div>
-        </form>
 
-        <Button className={classes.btn}>Submit</Button>
+          <Button className={classes.btn} type="submit">
+            Submit
+          </Button>
+        </form>
       </Paper>
     </div>
   );

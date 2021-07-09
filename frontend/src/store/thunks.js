@@ -15,13 +15,6 @@ export const fetchAllCampusesThunk = () => async (dispatch) => {
 
 //Single campus
 export const fetchCampusThunk = (id) => async (dispatch) => {
-  // thunk creator would not an be async function
-  // if using Promise.then:
-  // return axios
-  //   .get(`/api/campuses/${id}`)
-  //   .then((res) => res.data)
-  //   .then((campus) => dispatch(ac.fetchCampus(campus)))
-  //   .catch((err) => console.log(err));
   try {
     let res = await axios.get(`/api/campuses/${id}`);
     dispatch(ac.fetchCampus(res.data));
@@ -40,10 +33,30 @@ export const fetchAllStudentsThunk = () => async (dispatch) => {
   }
 };
 
+//Single student
+export const fetchStudentThunk = (id) => async (dispatch) => {
+  try {
+    let res = await axios.get(`/api/students/${id}`);
+    dispatch(ac.fetchStudent(res.data));
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 export const addStudentThunk = (student) => async (dispatch) => {
   try {
     let res = await axios.post(`/api/students`, student);
     dispatch(ac.addStudent(res.data));
+    return res.data;
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export const addCampusThunk = (campus) => async (dispatch) => {
+  try {
+    let res = await axios.post(`/api/campuses`, campus);
+    dispatch(ac.addCampus(res.data));
     return res.data;
   } catch (err) {
     console.error(err);
@@ -77,16 +90,6 @@ export const editStudentThunk = (student) => async (dispatch) => {
       student
     );
     dispatch(ac.editStudent(updatedStudent));
-  } catch (err) {
-    console.error(err);
-  }
-};
-
-//Single student
-export const fetchStudentThunk = (id) => async (dispatch) => {
-  try {
-    let res = await axios.get(`/api/students/${id}`);
-    dispatch(ac.fetchStudent(res.data));
   } catch (err) {
     console.error(err);
   }

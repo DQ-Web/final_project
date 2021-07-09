@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
   formContainer: {
     margin: theme.spacing(4),
+    textAlign: "center",
   },
   title: {
     fontWeight: "bold",
@@ -29,12 +30,12 @@ const useStyles = makeStyles((theme) => ({
   btn: {
     backgroundColor: "#087E8B",
     color: "white",
-    margin: theme.spacing(2.5),
+    margin: theme.spacing(5, 2.5, 0),
     width: theme.spacing(20),
   },
 }));
 
-const EditCampus = () => {
+const EditCampus = ({ handleChange, handleSubmit }) => {
   const classes = useStyles();
 
   return (
@@ -43,34 +44,44 @@ const EditCampus = () => {
         <Typography variant="h4" className={classes.title}>
           Create New Campus
         </Typography>
-        <form className={classes.formContainer}>
+        <form
+          className={classes.formContainer}
+          onSubmit={(e) => handleSubmit(e)}
+        >
           <div style={{ display: "flex" }}>
-            <TextField required id="name" label="Name" />
             <TextField
-              id="imageUrl"
+              required
+              name="name"
+              label="Name"
+              style={{ width: "50%" }}
+              onChange={(e) => handleChange(e)}
+            />
+            <TextField
+              name="imageUrl"
               label="Profile Image"
               helperText="use an image URL"
-            />
-            <TextField
-              multiline
-              id="description"
-              label="Description"
-              style={{ width: "100%" }}
+              style={{ width: "50%" }}
+              onChange={(e) => handleChange(e)}
             />
           </div>
-          <div>
-            <Typography style={{ marginTop: "1rem", fontSize: "18px" }}>
-              Address:
-            </Typography>
-            <TextField required id="line1" label="line1" />
-            <TextField id="line2" label="line2" />
-            <TextField required id="city" label="city" />
-            <TextField required id="state" label="state" />
-            <TextField required id="zip" label="zip" />
-          </div>
+          <TextField
+            required
+            name="address"
+            label="Address"
+            style={{ width: "100%" }}
+            onChange={(e) => handleChange(e)}
+          />
+          <TextField
+            multiline
+            name="description"
+            label="Description"
+            style={{ width: "100%" }}
+            onChange={(e) => handleChange(e)}
+          />
+          <Button className={classes.btn} type="submit">
+            Submit
+          </Button>
         </form>
-
-        <Button className={classes.btn}>Submit</Button>
       </Paper>
     </div>
   );
