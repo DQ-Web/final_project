@@ -13,11 +13,6 @@ const Campus = db.define("campus", {
   address: {
     type: Sequelize.STRING,
     allowNull: false,
-    line1: Sequelize.STRING,
-    line2: Sequelize.STRING,
-    city: Sequelize.STRING,
-    state: Sequelize.STRING,
-    zip: Sequelize.STRING,
   },
   description: {
     type: Sequelize.STRING,
