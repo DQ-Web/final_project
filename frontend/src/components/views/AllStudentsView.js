@@ -1,26 +1,40 @@
-import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { EmptyState } from "../EmptyState";
 
 const AllStudentsView = (props) => {
-  if (!props.allStudents.length) {
-    return <EmptyState />;
+  const { students, deleteStudent } = props;
+
+  // if (!props.allStudents.length) {
+  //   return <EmptyState />;
+  // }
+  if (!students.length) {
+    return (
+      <div>
+        <p>There are no students.</p>
+        <Link to={`student/new`}>
+          <button>Add New Student</button>
+        </Link>
+      </div>
+    );
   }
+
   return (
     <div>
-      {props.allStudents.map((student) => (
-        <div key={student.id}>
-          <Link to={`/students/${student.id}`}>
-            <h1>{student.name}</h1>
-          </Link>
-        </div>
-      ))}
+      {students.map((student) => {
+        let name = student.firstname + " " + student.lastname;
+        return (
+          <div key={student.id}>
+            <Link to={`/student/${student.id}`}>
+              <h1>{name}</h1>
+            </Link>
+            <button onClick={() => deleteStudent(student.id)}>Delete</button>
+          </div>
+        );
+      })}
+      <Link to={`/newstudent`}>
+        <button>Add New Student</button>
+      </Link>
     </div>
   );
-};
-
-AllStudentsView.propTypes = {
-  allStudents: PropTypes.array.isRequired,
 };
 
 export default AllStudentsView;
