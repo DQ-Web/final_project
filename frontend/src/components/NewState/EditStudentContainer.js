@@ -58,10 +58,9 @@ class EditStudentContainer extends Component {
   }
 
   render() {
-    if (this.state.redirect) {
-      return <Redirect to={`/student/${this.state.redirectId}`} />;
-    }
-    return (
+    return this.state.redirect ? (
+      <Redirect to={`/student/${this.state.redirectId}`} />
+    ) : (
       <EditStudent
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}

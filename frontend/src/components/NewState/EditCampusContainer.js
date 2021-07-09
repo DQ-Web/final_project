@@ -50,10 +50,9 @@ class EditCampusContainer extends Component {
   }
 
   render() {
-    if (this.state.redirect) {
-      return <Redirect to={`/campus/${this.state.redirectId}`} />;
-    }
-    return (
+    return this.state.redirect ? (
+      <Redirect to={`/campus/${this.state.redirectId}`} />
+    ) : (
       <EditCampus
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
