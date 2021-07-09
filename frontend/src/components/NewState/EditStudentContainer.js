@@ -1,8 +1,7 @@
 import { Component } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
-
-import NewStudentView from "../views/NewStudentView";
+import EditStudent from "./EditStudent";
 import { addStudentThunk } from "../../store/thunks";
 
 class NewStudentContainer extends Component {
@@ -13,6 +12,8 @@ class NewStudentContainer extends Component {
       lastname: "",
       campusId: null,
       email: "",
+      imageUrl: "",
+      gpa: 0.0,
       redirect: false,
       redirectId: null,
     };
@@ -30,7 +31,9 @@ class NewStudentContainer extends Component {
     let student = {
       firstname: this.state.firstname,
       lastname: this.state.lastname,
-      email: "email@email.com",
+      email: this.state.email,
+      imageUrl: this.state.imageUrl,
+      gpa: this.state.gpa,
       campusId: this.state.campusId,
     };
     console.log("student", student);
@@ -42,6 +45,8 @@ class NewStudentContainer extends Component {
       firstname: "",
       lastname: "",
       email: "",
+      imageUrl: "",
+      gpa: 0.0,
       campusId: null,
       redirect: true,
       redirectId: newStudent.id,
@@ -57,7 +62,7 @@ class NewStudentContainer extends Component {
       return <Redirect to={`/student/${this.state.redirectId}`} />;
     }
     return (
-      <NewStudentView
+      <EditStudent
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
       />

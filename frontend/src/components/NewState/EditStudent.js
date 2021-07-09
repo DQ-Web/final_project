@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const EditStudent = () => {
+const EditStudent = ({ handleChange, handleSubmit }) => {
   const classes = useStyles();
 
   return (
@@ -43,29 +43,52 @@ const EditStudent = () => {
         <Typography variant="h4" className={classes.title}>
           Create New Student
         </Typography>
-        <form className={classes.formContainer}>
+        <form
+          className={classes.formContainer}
+          onSubmit={(e) => handleSubmit(e)}
+        >
           <div>
-            <TextField required id="first-name" label="First Name" />
-            <TextField required id="last-name" label="Last Name" />
+            <TextField
+              required
+              name="firstname"
+              label="First Name"
+              onChange={(e) => handleChange(e)}
+            />
+            <TextField
+              required
+              name="lastname"
+              label="Last Name"
+              onChange={(e) => handleChange(e)}
+            />
+            <TextField
+              required
+              name="campusId"
+              label="Campus Id"
+              onChange={(e) => handleChange(e)}
+            />
           </div>
 
           <TextField
             required
-            id="email"
+            name="email"
             label="Email"
             style={{ width: "100%" }}
+            onChange={(e) => handleChange(e)}
           />
           <div>
             <TextField
-              id="imageUrl"
+              name="imageUrl"
               label="Profile Image"
               helperText="use an image URL"
+              onChange={(e) => handleChange(e)}
             />
-            <TextField required id="gpa" label="GPA" />
+            <TextField name="gpa" label="GPA" />
           </div>
-        </form>
 
-        <Button className={classes.btn}>Submit</Button>
+          <Button className={classes.btn} type="submit">
+            Submit
+          </Button>
+        </form>
       </Paper>
     </div>
   );
