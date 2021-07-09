@@ -14,7 +14,7 @@ import {
 } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { makeStyles } from "@material-ui/core/styles";
-// import { EmptyState } from "../EmptyState";
+import { EmptyState } from "../EmptyState";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -28,13 +28,7 @@ const useStyles = makeStyles((theme) => ({
 const AllCampusesView = ({ allCampuses, deleteCampus }) => {
   const classes = useStyles();
   if (!allCampuses.length) {
-    return (
-      <div>
-        <Link to="/newcampus">
-          <button>Add New Campus</button>
-        </Link>
-      </div>
-    );
+    return <EmptyState isCampus />;
   }
 
   return (

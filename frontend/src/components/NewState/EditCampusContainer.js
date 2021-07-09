@@ -4,13 +4,15 @@ import { Redirect } from "react-router-dom";
 import EditCampus from "./EditCampus";
 import { addCampusThunk } from "../../store/thunks";
 
+const defaultImg = "https://image.flaticon.com/icons/png/512/170/170427.png";
+
 class EditCampusContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
       name: "",
       address: "",
-      imageUrl: "",
+      imageUrl: defaultImg,
       description: "",
       redirect: false,
       redirectId: null,
@@ -38,7 +40,7 @@ class EditCampusContainer extends Component {
     this.setState({
       name: "",
       address: "",
-      imageUrl: "",
+      imageUrl: defaultImg,
       description: "",
       redirect: true,
       redirectId: newCampus.id,

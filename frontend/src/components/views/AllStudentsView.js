@@ -12,22 +12,13 @@ import {
   Container,
 } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
+import { EmptyState } from "../EmptyState";
 
 const AllStudentsView = (props) => {
   const { students, deleteStudent } = props;
 
-  // if (!props.allStudents.length) {
-  //   return <EmptyState />;
-  // }
   if (!students.length) {
-    return (
-      <div>
-        <p>There are no students.</p>
-        <Link to={`/newstudent`}>
-          <button>Add New Student</button>
-        </Link>
-      </div>
-    );
+    return <EmptyState />;
   }
 
   return (

@@ -11,8 +11,6 @@ import {
   AllStudentsContainer,
 } from "./components/containers";
 import {
-  EditCampus,
-  EditStudent,
   EditStudentContainer,
   EditCampusContainer,
 } from "./components/NewState";
