@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -10,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
   },
   img: {
     maxWidth: theme.spacing(30),
-    marginBottom: theme.spacing(5),
+    marginBottom: theme.spacing(1),
   },
   description: {
     marginTop: theme.spacing(3),
@@ -22,9 +23,13 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     fontStyle: "italic",
   },
+  btn: {
+    textDecoration: "none",
+    width: "100%",
+  },
 }));
 
-const CampusView = ({ campus }) => {
+const CampusView = ({ campus, deleteCampus, editCampus }) => {
   const classes = useStyles();
 
   return (
@@ -37,6 +42,20 @@ const CampusView = ({ campus }) => {
             alt={campus.name}
           />
         </Grid>
+
+        <Grid container item justify="center" style={{ marginBottom: "40px" }}>
+          <Grid item>
+            <Link to={`/campus/${campus.id}/edit`} className={classes.btn}>
+              <Button>Edit</Button>
+            </Link>
+          </Grid>
+          <Grid item>
+            <Link to="/campuses" className={classes.btn}>
+              <Button onClick={() => deleteCampus(campus.id)}>Delete</Button>
+            </Link>
+          </Grid>
+        </Grid>
+
         <Grid item>
           <Typography variant="h2" style={{ fontWeight: "bold" }}>
             {campus.name}

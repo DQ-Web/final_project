@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchStudentThunk } from "../../store/thunks";
+import {
+  fetchStudentThunk,
+  deleteStudentThunk,
+  editStudentThunk,
+} from "../../store/thunks";
 import { StudentView } from "../views";
 
 class StudentContainer extends Component {
@@ -10,7 +14,13 @@ class StudentContainer extends Component {
   }
 
   render() {
-    return <StudentView student={this.props.student} />;
+    return (
+      <StudentView
+        student={this.props.student}
+        deleteStudent={this.props.deleteStudent}
+        editStudent={this.props.editStudent}
+      />
+    );
   }
 }
 
@@ -25,6 +35,8 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     fetchStudent: (id) => dispatch(fetchStudentThunk(id)),
+    deleteStudent: (studentId) => dispatch(deleteStudentThunk(studentId)),
+    editCampus: (student) => dispatch(editStudentThunk(student)),
   };
 };
 

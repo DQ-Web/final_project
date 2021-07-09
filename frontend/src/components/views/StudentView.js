@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -10,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
   },
   img: {
     maxWidth: theme.spacing(30),
-    marginBottom: theme.spacing(5),
+    marginBottom: theme.spacing(1),
   },
   description: {
     marginTop: theme.spacing(3),
@@ -22,9 +23,13 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     fontStyle: "italic",
   },
+  btn: {
+    textDecoration: "none",
+    width: "100%",
+  },
 }));
 
-const StudentView = ({ student }) => {
+const StudentView = ({ student, deleteStudent }) => {
   const classes = useStyles();
 
   return (
@@ -36,6 +41,19 @@ const StudentView = ({ student }) => {
             src={student.imageUrl}
             alt={student.name}
           />
+        </Grid>
+
+        <Grid container item justify="center" style={{ marginBottom: "40px" }}>
+          <Grid item>
+            <Link to={`/student/${student.id}/edit`} className={classes.btn}>
+              <Button>Edit</Button>
+            </Link>
+          </Grid>
+          <Grid item>
+            <Link to="/students" className={classes.btn}>
+              <Button onClick={() => deleteStudent(student.id)}>Delete</Button>
+            </Link>
+          </Grid>
         </Grid>
 
         <Grid item>
