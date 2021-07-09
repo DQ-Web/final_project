@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { makeStyles } from "@material-ui/core/styles";
 import {
   Button,
   Grid,
@@ -14,7 +15,18 @@ import {
 import DeleteIcon from "@material-ui/icons/Delete";
 import { EmptyState } from "../EmptyState";
 
+const useStyles = makeStyles((theme) => ({
+  btn: {
+    backgroundColor: "#087E8B",
+    color: "white",
+    marginTop: theme.spacing(4),
+    width: theme.spacing(30),
+    padding: theme.spacing(1),
+  },
+}));
+
 const AllStudentsView = (props) => {
+  const classes = useStyles();
   const { students, deleteStudent } = props;
 
   if (!students.length) {
@@ -48,10 +60,8 @@ const AllStudentsView = (props) => {
             );
           })}
         </List>
-        <Link to={`/newstudent`}>
-          <Button variant="contained" color="primary">
-            Add New Student
-          </Button>
+        <Link to={`/newstudent`} style={{ textDecoration: "none" }}>
+          <Button className={classes.btn}>Add New Student</Button>
         </Link>
       </Grid>
     </Container>

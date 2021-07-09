@@ -23,6 +23,13 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     flexDirection: "column",
   },
+  btn: {
+    backgroundColor: "#087E8B",
+    color: "white",
+    marginTop: theme.spacing(4),
+    width: theme.spacing(30),
+    padding: theme.spacing(1),
+  },
 }));
 
 const AllCampusesView = ({ allCampuses, deleteCampus }) => {
@@ -65,10 +72,8 @@ const AllCampusesView = ({ allCampuses, deleteCampus }) => {
             </ListItem>
           ))}
         </List>
-        <Link to="/newcampus">
-          <Button variant="contained" color="primary">
-            Add New Campus
-          </Button>
+        <Link to="/newcampus" style={{ textDecoration: "none" }}>
+          <Button className={classes.btn}>Add New Campus</Button>
         </Link>
       </Grid>
     </Container>
