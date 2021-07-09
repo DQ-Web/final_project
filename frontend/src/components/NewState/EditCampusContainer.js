@@ -45,8 +45,6 @@ class EditCampusContainer extends Component {
       id: isEdit ? id : null,
     };
 
-    console.log(campus);
-
     let newCampus = (await isEdit)
       ? this.props.editCampus(campus)
       : this.props.addCampus(campus);
