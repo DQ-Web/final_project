@@ -35,8 +35,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const EditCampus = ({ handleChange, handleSubmit, isEdit }) => {
+const EditCampus = ({ handleChange, handleSubmit, isEdit, nameError, addressError }) => {
   const classes = useStyles();
+
+  const nameHelperText = 'Name cannot be empty';
+  const addressHelperText = 'Address cannot be empty';
 
   return (
     <div className={`${classes.container} ${classes.root}`}>
@@ -50,6 +53,8 @@ const EditCampus = ({ handleChange, handleSubmit, isEdit }) => {
         >
           <div style={{ display: "flex" }}>
             <TextField
+              error={nameError}
+              helperText={nameError && nameHelperText}
               required
               name="name"
               label="Name"
@@ -65,6 +70,8 @@ const EditCampus = ({ handleChange, handleSubmit, isEdit }) => {
             />
           </div>
           <TextField
+            error={addressError}
+            helperText={addressError && addressHelperText}
             required
             name="address"
             label="Address"

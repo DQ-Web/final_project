@@ -22,6 +22,8 @@ class EditCampusContainer extends Component {
       redirect: false,
       redirectId: null,
       id: null,
+      nameError: false,
+      addressError: false,
     };
   }
 
@@ -29,6 +31,19 @@ class EditCampusContainer extends Component {
     this.setState({
       [event.target.name]: event.target.value,
     });
+
+    const { name, value } = event.target;
+
+    switch (name) {
+      case 'name':
+        this.setState({nameError: value === '' ? true : false});
+        break;
+      case 'address':
+        this.setState({addressError: value === '' ? true : false});
+        break;
+      default:
+        break;
+    }
   };
 
   handleSubmit = async (event) => {
@@ -74,6 +89,8 @@ class EditCampusContainer extends Component {
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
         isEdit={isEdit}
+        nameError={this.state.nameError}
+        addressError={this.state.addressError}
       />
     );
   }
