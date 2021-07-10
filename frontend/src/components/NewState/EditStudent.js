@@ -35,8 +35,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const EditStudent = ({ handleChange, handleSubmit, isEdit }) => {
+const EditStudent = ({ handleChange, handleSubmit, isEdit, fnameError, lnameError, campusIdError, emailError, validEmail }) => {
   const classes = useStyles();
+
+  const fnameHelperText = 'First name cannot be empty';
+  const lnameHelperText = 'Last name cannot be empty';
+  const campusIdHelperText = 'Campus Id cannot be empty';
+  const emailHelperText = 'Not a vaild email';
 
   return (
     <div className={`${classes.container} ${classes.root}`}>
@@ -50,18 +55,24 @@ const EditStudent = ({ handleChange, handleSubmit, isEdit }) => {
         >
           <div>
             <TextField
+              error={fnameError}
+              helperText={fnameError && fnameHelperText}
               required
               name="firstname"
               label="First Name"
               onChange={(e) => handleChange(e)}
             />
             <TextField
+              error={lnameError}
+              helperText={lnameError && lnameHelperText}
               required
               name="lastname"
               label="Last Name"
               onChange={(e) => handleChange(e)}
             />
             <TextField
+              error={campusIdError}
+              helperText={campusIdError && campusIdHelperText}
               required
               name="campusId"
               label="Campus Id"
@@ -70,6 +81,8 @@ const EditStudent = ({ handleChange, handleSubmit, isEdit }) => {
           </div>
 
           <TextField
+            error={emailError || validEmail}
+            helperText={(emailError || validEmail) && emailHelperText}
             required
             name="email"
             label="Email"

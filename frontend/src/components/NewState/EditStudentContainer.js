@@ -20,6 +20,11 @@ class EditStudentContainer extends Component {
       redirect: false,
       redirectId: null,
       id: null,
+      fnameError: false,
+      lnameError: false,
+      campusIdError: false,
+      emailError: false,
+      validEmail: false,
     };
   }
 
@@ -27,6 +32,28 @@ class EditStudentContainer extends Component {
     this.setState({
       [event.target.name]: event.target.value,
     });
+
+    const { name, value } = event.target;
+
+    switch (name) {
+      case 'firstname':
+        this.setState({fnameError: value === '' ? true : false});
+        break;
+      case 'lastname':
+        this.setState({lnameError: value === '' ? true : false});
+        break;
+      case 'campusId':
+        this.setState({campusIdError: value === '' ? true : false});
+        break;
+      case 'email':
+        this.setState({emailError: value === '' ? true : false});
+
+        const emailRegex = /\S+@\S+\.\S+/;
+        this.setState({validEmail: !emailRegex.test(value)});
+        break;
+      default:
+        break;
+    }
   };
 
   handleSubmit = async (event) => {
@@ -76,6 +103,11 @@ class EditStudentContainer extends Component {
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
         isEdit={isEdit}
+        fnameError={this.state.fnameError}
+        lnameError={this.state.lnameError}
+        campusIdError={this.state.campusIdError}
+        emailError={this.state.emailError}
+        validEmail={this.state.validEmail}
       />
     );
   }
