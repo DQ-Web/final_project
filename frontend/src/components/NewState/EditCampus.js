@@ -35,14 +35,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const EditCampus = ({ handleChange, handleSubmit }) => {
+const EditCampus = ({ handleChange, handleSubmit, isEdit }) => {
   const classes = useStyles();
 
   return (
     <div className={`${classes.container} ${classes.root}`}>
       <Paper className={classes.container}>
         <Typography variant="h4" className={classes.title}>
-          Create New Campus
+          {isEdit ? "Edit" : "Create New"} Campus
         </Typography>
         <form
           className={classes.formContainer}
